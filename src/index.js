@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-
+import ProvideR  from './ownReduxProvider'
+import { configureStore } from '@reduxjs/toolkit';
+import { reducer, preloadedState } from './reducer';
+const store = configureStore({reducer, preloadedState})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <ProvideR store={store}>
     <App />
-  </React.StrictMode>
+  </ProvideR>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
